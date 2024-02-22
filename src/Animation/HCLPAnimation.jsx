@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import HeyCoachLogoWhite from "./HEYCOACH WHITE.png";
 import HeycoachLogoOriginal from "./heycoach-logo.cadaeb82.png";
-
 const HCLPAnimation = () => {
   useEffect(() => {
     const tl = gsap.timeline();
@@ -14,95 +13,91 @@ const HCLPAnimation = () => {
       "heycoachLogoOriginal"
     );
 
-    // First movement
+    // First movement of circles
     tl.set(circleLeft, { x: "0%", transformOrigin: "0% 50%" });
     tl.set(circleRight, { x: "100%", transformOrigin: "100% 0%", right: "0" });
 
-    tl.to(circleLeft, { duration: 1, x: "47vw", ease: "power2.out" }, 0);
-    tl.to(circleRight, { duration: 1, x: "-46vw", ease: "power2.out" }, 0);
+    tl.to(circleLeft, { duration: 0.3, x: "47vw", ease: "linear" }, 0);
+    tl.to(circleRight, { duration: 0.3, x: "-46vw", ease: "linear" }, 0);
 
-    // Second expand
+    // Second expanding of circle
     tl.to([circleLeft], {
-      duration: 1,
+      duration: 0.2,
       width: "3000px",
       height: "3000px",
-      ease: "power2.out",
+      ease: "linear",
     });
 
     tl.to(
       [circleRight],
       {
-        duration: 1,
+        duration: 0.2,
         width: "3000px",
         height: "3000px",
-        ease: "power2.out",
+        ease: "linear",
         right: null,
-        left: "0vh",
+        left: "-10vh",
         x: "100%%",
       },
-      "-=1"
+      "-=0.2"
     );
 
-    //  Third Image
+    //  Third Image white heycoach  logo
     tl.to(
       heycoachLogoWhite,
-      { opacity: 1, duration: 0.5, ease: "power2.out" },
-      "=0.5"
+      { opacity: 1, duration: 0.2, ease: "linear" },
+      "=0.2"
     );
 
-    // Fourth Collapse
+    // Fourth Collapsing of both circle
     tl.to([circleLeft], {
-      duration: 1,
+      duration: 0.3,
       width: 0,
       height: 0,
-      ease: "power2.out",
+      ease: "linear",
     });
 
     tl.to(
       [circleRight],
       {
-        duration: 1,
+        duration: 0.3,
         width: 0,
         height: 0,
-        ease: "power2.out",
+        ease: "linear",
         right: null,
         left: "-10vh",
       },
-      "-=1"
+      "-=0.3"
     );
 
     // Hiding white heycoach image
     tl.to(
       heycoachLogoWhite,
-      { opacity: 0, duration: 0.5, ease: "power2.out" },
-      "-=0.02"
+      { opacity: 0, duration: 0.2, ease: "linear" },
+      "+=0.7"
     );
 
-    // // fifth image heycoach original logo
+    // fifth image heycoach original logo
     tl.to(
       heycoachLogoOriginal,
       {
         opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-      }
-      // "-=0.1"
+        duration: 0.2,
+        ease: "linear",
+      },
+      "-=0.2"
     );
 
     // Sixth gradient
     const gradientCircle = document.getElementById("gradientCircle");
-    tl.to(
-      gradientCircle,
-      {
-        duration: 1,
-        opacity: 1,
-        ease: "power2.out",
-        width: "3000px",
-        height: "3000px",
-        borderRadius: "50%",
-      },
-      "-=0.2"
-    );
+    tl.to(gradientCircle, {
+      duration: 0.3,
+      opacity: 1,
+      ease: "linear",
+      width: "3000px",
+      height: "3000px",
+      borderRadius: "50%",
+    });
   }, []);
 
   const circleRightStyle = {
@@ -133,6 +128,7 @@ const HCLPAnimation = () => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     opacity: 0,
+    marginLeft: "-10px",
   };
 
   const gradientCircleStyle = {
@@ -143,7 +139,7 @@ const HCLPAnimation = () => {
     width: "0",
     height: "0",
     opacity: 0,
-    background: "linear-gradient(to top right, #81d4fa, #ffb74d)",
+    background: "linear-gradient(45deg, #99ccff, #ffffcc, #ffffff)",
     borderRadius: "50%",
     pointerEvents: "none",
     transition: "width 1s, height 1s, opacity 1s",
@@ -200,14 +196,14 @@ const HCLPAnimation = () => {
         id="heycoachLogoWhite"
         src={HeyCoachLogoWhite}
         alt="Center Image"
-        style={{ ...centerImageStyle, width: "200px", height: "50px" }}
+        style={{ ...centerImageStyle, width: "300px", height: "75px" }}
       />
 
       <img
         id="heycoachLogoOriginal"
         src={HeycoachLogoOriginal}
         alt="Center Image"
-        style={{ ...centerImageStyle, width: "200px", height: "50px" }}
+        style={{ ...centerImageStyle, width: "300px", height: "75px" }}
       />
     </>
   );
